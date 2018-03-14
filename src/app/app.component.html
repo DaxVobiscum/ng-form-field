@@ -1,5 +1,5 @@
 <form [formGroup]="form">
-  <div appFormField>
+  <div *appFormField="form.get('ff1')">
     <input type="text" [formControl]="form.get('ff1.input')" />
   </div>
 </form>

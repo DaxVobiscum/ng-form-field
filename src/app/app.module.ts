@@ -6,12 +6,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { FormFieldDirective } from './form-field.directive';
+import { FieldBuddyComponent } from './field-buddy.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormFieldDirective
+    FormFieldDirective,
+    FieldBuddyComponent
+  ],
+  entryComponents: [
+    FieldBuddyComponent
   ],
   imports: [
     BrowserModule,
