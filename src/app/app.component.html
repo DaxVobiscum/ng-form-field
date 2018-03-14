@@ -2,4 +2,9 @@
   <div *appFormField="form.get('ff1.input')">
     <input type="text" [formControl]="form.get('ff1.input')" />
   </div>
+  <div>
+    <p appFieldHelper>
+      This field is also red.
+    </p>
+  </div>
 </form>
