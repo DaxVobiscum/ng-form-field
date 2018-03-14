@@ -2,6 +2,8 @@ import {
   Directive,
   Input,
   ComponentFactoryResolver,
+  Renderer2,
+  ElementRef,
   ViewContainerRef,
   TemplateRef
 } from '@angular/core';
@@ -18,6 +20,8 @@ export class FormFieldDirective {
   
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
+    private renderer: Renderer2,
+    private elementRef: ElementRef,
     private templateRef: TemplateRef<any>,
     private viewContainer: ViewContainerRef
   ) { }
@@ -34,6 +38,11 @@ export class FormFieldDirective {
           const errors = fieldBuddy.control.errors;
           if (errors && errors.required) {
             fieldBuddy.setMessage('Field is required.');
+            setTimeout(() => {
+              const parentNode = this.renderer.parentNode(this.elementRef.nativeElement);
+              const messageNode = parentNode.querySelector('p');
+              this.renderer.setStyle(messageNode, 'color', 'red');
+            });
           }
         } else {
           fieldBuddy.clearMessage();
